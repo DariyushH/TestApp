@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 public class User {
     @Id
     @Column(name = "id")
@@ -32,6 +32,7 @@ public class User {
 
     @Column(name = "roles")
     @ElementCollection
+    @CollectionTable(name = "user_roles")
     @Size(min = 1, max = 3, message = "Количество ролей должно быть от 1 до 3")
     private List<@NotBlank(message = "Поле не может быть пустым" ) String> roles;
 

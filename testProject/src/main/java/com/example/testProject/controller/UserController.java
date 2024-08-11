@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/{id}")
+    @PostMapping("/create")
     public ResponseEntity<User> createUser(@Validated @RequestBody User user){
         return ResponseEntity.ok(userService.saveUser(user));
     }
@@ -42,8 +42,8 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @GetMapping("/save")
-    public ResponseEntity<String> saveUsersToFile() {
+    @GetMapping("/export")
+    public ResponseEntity<String> exportUsersToFile() {
         List<User> users = userService.getAllUsers();
         try (FileWriter writer = new FileWriter("users.txt")) {
             for (User user : users) {
