@@ -42,6 +42,10 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
+    @GetMapping("/getAllUsers")
+    public void outputAllUsers() {
+        System.out.println(ResponseEntity.ok(userService.getAllUsers()));
+    }
 
     @GetMapping("/export")
     public ResponseEntity<String> exportUsersToFile() {

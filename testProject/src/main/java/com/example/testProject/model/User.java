@@ -37,6 +37,7 @@ public class User {
     private List<@NotBlank(message = "Поле не может быть пустым") String> roles;
 
     @Column(name = "phones")
+    @CollectionTable
     @ElementCollection
     @Size(min = 1, max = 3, message = "Количество телефонов должно быть от 1 до 3")
     private List<@Pattern(regexp = "375\\d{9}", message = "Неверный формат номера телефона") String> phones;
