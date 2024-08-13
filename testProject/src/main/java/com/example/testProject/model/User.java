@@ -1,5 +1,6 @@
 package com.example.testProject.model;
 
+import com.example.testProject.enums.Roles;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -30,15 +31,19 @@ public class User {
     @Email(message = "Неверный формат email")
     private String email;
 
-    @Column(name = "roles")
-    @ElementCollection
+
+    @Enumerated(value = EnumType.STRING)
+
+    @ElementCollection(targetClass = Roles.class)
     @CollectionTable(name = "user_roles")
     @Size(min = 1, max = 3, message = "Количество ролей должно быть от 1 до 3")
-    private List<@NotBlank(message = "Поле не может быть пустым") String> roles;
+    private List<Roles> roles;
+
+
 
     @Column(name = "phones")
-    @CollectionTable
     @ElementCollection
+    @CollectionTable(name = "user_phones")
     @Size(min = 1, max = 3, message = "Количество телефонов должно быть от 1 до 3")
     private List<@Pattern(regexp = "375\\d{9}", message = "Неверный формат номера телефона") String> phones;
 }
