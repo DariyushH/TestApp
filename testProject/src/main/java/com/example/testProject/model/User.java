@@ -33,12 +33,10 @@ public class User {
 
 
     @Enumerated(value = EnumType.STRING)
-
     @ElementCollection(targetClass = Roles.class)
     @CollectionTable(name = "user_roles")
     @Size(min = 1, max = 3, message = "Количество ролей должно быть от 1 до 3")
     private List<Roles> roles;
-
 
 
     @Column(name = "phones")
