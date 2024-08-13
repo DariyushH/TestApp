@@ -22,18 +22,18 @@ public class UserController {
         return ResponseEntity.ok(userService.saveUser(user));
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @Validated @RequestBody User user) {
         return ResponseEntity.ok(userService.updateUser(id, user));
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/get")
+    @GetMapping("/get/{id}")
     public ResponseEntity<User> getUser(@PathVariable Long id) {
         return ResponseEntity.ok(userService.getUser(id));
     }
